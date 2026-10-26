@@ -104,6 +104,8 @@
     // Initial load to display the time on page load
     window.onload = getLastUpdatedTime;
 </script>
+
+<script>
         // Function to verify the last update time by re-fetching it from the API
         async function verifyLastUpdatedTime() {
             document.getElementById('last-updated').innerText = 'Verifying...';
