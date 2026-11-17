@@ -145,8 +145,8 @@
 
         
 
-    <p class="ex1">
-        <pre>
+    <p id="Introduction_InText">
+    
             Active Learning (Angluin, 1988, Cohn et al., 1994) is a paradigm where a concept is learnt by an
             intelligent machine through the interaction of an oracle with the machine system, over a sequence of
             learning epochs. A distinctive component in an active system is the querying strategy, used to sample
@@ -161,43 +161,34 @@
             learning at each epoch. The process is continued until some stopping criterion has been met, such as
             reaching a stage where information from the selected instances is contrary to the model, causing the
             classifier confidence to drop, as in Vlachos (2008
-            
-        </pre>
+    
     </p>
 
 
 <!-- This is my section for the Analysis and discussion section -->
 
                 
-    <p class ="ex1">
-        <h3 id=”Analysis and discussion”>Analysis and discussion</h3>
+  
+        <h3 id="Analysis and discussion">Analysis and discussion</h3>
 
-        <pre>
+        <p id="Analysis_InText">
             Hi, this is the Analysis and discussion section for my github webpage and this paragraph
             is to test if this actually is displayed on my webpage which is really important as it tells me what is
             working and what isnt.
-
-            
-        </pre>
-
-    </p>    
+   </p>    
 
                 
 
 <!-- This is my section for the references section -->
 
                 
-    <p class ="ex1">
-        <h3 id=”References”>References</h3>
 
-        <pre>
+        <h3 id="References">References</h3>
+
+        <p>
             Hi, this is the references section for my github webpage and this paragraph
             is to test if this actually is displayed on my webpage which is really important as it tells me what is
             working and what isnt.
-
-            
-        </pre>
-
     </p>
 
     <table>
@@ -296,57 +287,37 @@
 </script>
 
 
-<!-- Word count display -->
+ <!-- //////////////////////////////////////////////////////////////////////////////// -->
+  <!-- ////////////////////////////// Word count function ////////////////////////////// -->
+  <!-- //////////////////////////////////////////////////////////////////////////////// -->
+<!-- Placeholder for total word count -->
 <p id="totalWordCount"></p>
 <hr>
-
 <script>
-
-// Function to calculate word count for a specified section
-function displayWordCount(sectionId) {
-
+  // Function to calculate and display word count for a specified section
+  function displayWordCount(sectionId, outputId) {
     // Get the text content from the specified section
-    const section = document.getElementById(sectionId);
-
-    // Check that the section exists
-    if (!section) {
-        console.warn(`Section not found: ${sectionId}`);
-        return 0;
-    }
-
-    const text = section.textContent.trim();
-
-    // Return zero if the section is empty
-    if (!text) {
-        return 0;
-    }
-
-    // Split text into words and count them
-    const wordArray = text.split(/\s+/);
-
-    return wordArray.length;
-}
-
-
-// Function to calculate and display total word count
-function displayTotalWordCount() {
-
-    // Calculate word count for each section
-    const introductionCount = displayWordCount("Introduction_InText");
-    const analysisCount = displayWordCount("Analysis_InText");
-
-    // Calculate total word count
-    const totalWordCount = introductionCount + analysisCount;
-
-    // Display total word count
-    document.getElementById("totalWordCount").innerText =
-        `Total word count: ${totalWordCount}`;
-}
-
-
-// Run when the page has loaded
-document.addEventListener("DOMContentLoaded", displayTotalWordCount);
-
+    const text = document.getElementById(sectionId).textContent;
+    // Split text into words based on spaces and filter out any empty strings
+    const wordArray = text.trim().split(/\s+/);
+    // Count the words
+    const wordCount = wordArray.length;
+    // Return the word count for summing purposes
+    return wordCount;
+  }
+  // Function to calculate and display total word count from selected sections
+  function displayTotalWordCount() {
+    // Calculate word count for each section and accumulate the total
+    const IntroductionCount = displayWordCount("Introduction_InText");
+    const AnalysisCount = displayWordCount("Analysis_InText");
+    // Calculate the sum of all selected sections
+    const totalWordCount = IntroductionCount + AnalysisCount;
+    // Display the total word count
+    document.getElementById("totalWordCount").innerText = `Total word count: ${totalWordCount}`;
+  }
+  // Run the function for specific sections and display total count when the page loads
+  window.onload = displayTotalWordCount;
+</script>
 
     
    
@@ -375,5 +346,10 @@ p.ex1 {
 }
 </style>
     </head>
+    
+    </html>
 
     
+
+
+
